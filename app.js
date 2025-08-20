@@ -14,8 +14,12 @@ const convertEurToDlr = (money) => money * EUR_TO_DLR;
 
 const converter = (money, currencyFrom, currencyTo) => {
   if (
-    (currencyFrom !== 'ru' || currencyFrom !== 'dlr' || currencyFrom !== 'eur') &&
-    (currencyTo !== 'ru' || currencyTo !== 'dlr' || currencyTo !== 'eur')
+    currencyFrom !== 'ru' ||
+    currencyFrom !== 'dlr' ||
+    currencyFrom !== 'eur' ||
+    currencyTo !== 'ru' ||
+    currencyTo !== 'dlr' ||
+    currencyTo !== 'eur'
   ) {
     return null;
   }
