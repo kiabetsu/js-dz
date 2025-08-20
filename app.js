@@ -12,19 +12,8 @@ const convertEurToRu = (money) => money * EUR_TO_RU;
 const convertDlrToEur = (money) => money * DLR_TO_EUR;
 const convertEurToDlr = (money) => money * EUR_TO_DLR;
 
-// const switchConvert = (money, currencyFrom, currencyTo) => {
-//   switch (currencyTo) {
-//     case 'ru':
-//       con
-//       break;
-
-//     default:
-//       break;
-//   }
-// }
-
 const converter = (money, currencyFrom, currencyTo) => {
-  if (currencyFrom && currencyTo) {
+  if (!currencyFrom && !currencyTo) {
     return null;
   }
   if (currencyFrom === currencyTo) {
@@ -34,23 +23,23 @@ const converter = (money, currencyFrom, currencyTo) => {
     case 'ru':
       switch (currencyTo) {
         case 'dlr':
-          return convertRuToDlr;
+          return convertRuToDlr(money);
         case 'eur':
-          return convertRuToEur;
+          return convertRuToEur(money);
       }
     case 'dlr':
-      switch (currencyFrom) {
+      switch (currencyTo) {
         case 'ru':
-          return convertDlrToRu;
+          return convertDlrToRu(money);
         case 'eur':
-          return convertDlrToEur;
+          return convertDlrToEur(money);
       }
     case 'eur':
-      switch (currencyFrom) {
+      switch (currencyTo) {
         case 'ru':
-          return convertEurToRu;
+          return convertEurToRu(money);
         case 'dlr':
-          return convertEurToDlr;
+          return convertEurToDlr(money);
       }
   }
 };
