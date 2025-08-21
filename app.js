@@ -10,11 +10,7 @@ const crypto = (string) => {
 console.log(crypto('password'));
 
 const check = (string, check) => {
-  let stringArray = string.split('');
-  let firstPart = stringArray.slice(0, stringArray.length / 2).reverse();
-  let secondPart = stringArray.slice(stringArray.length / 2).reverse();
-
-  const res = firstPart.join('') + secondPart.join('');
+  const res = crypto(string);
   return res === check;
 };
 
