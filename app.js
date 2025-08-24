@@ -5,21 +5,19 @@ const dateValidator = (dateArray) => {
     .map((date) => {
       if (date.includes('-')) {
         date = date.split('-');
-        console.log(date);
         if (date.length === 3) {
-          if (Number(date[0]) > 0 && Number(date[0] <= 31)) {
-            if (Number(date[1]) > 0 && Number(date[1] <= 12)) {
-              console.log('nice');
+          if (Number(date[0]) > 0 && Number(date[0]) <= 31) {
+            if (Number(date[1]) > 0 && Number(date[1]) <= 12) {
               return date.join('-');
             }
           }
         }
       }
-      if (date.includes('/')) {
+      else (date.includes('/')) {
         date = date.split('/');
         if (date.length === 3) {
-          if (Number(date[1]) > 0 && Number(date[1] <= 31)) {
-            if (Number(date[0]) > 0 && Number(date[0] <= 12)) {
+          if (Number(date[1]) > 0 && Number(date[1]) <= 31) {
+            if (Number(date[0]) > 0 && Number(date[0]) <= 12) {
               return `${date[1]}-${date[0]}-${date[2]}`;
             }
           }
