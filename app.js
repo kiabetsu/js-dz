@@ -8,17 +8,20 @@ const dateValidator = (dateArray) => {
         if (date.length === 3) {
           if (Number(date[0]) > 0 && Number(date[0]) <= 31) {
             if (Number(date[1]) > 0 && Number(date[1]) <= 12) {
-              return date.join('-');
+              if (Number(date[2])) {
+                return date.join('-');
+              }
             }
           }
         }
-      }
-      else (date.includes('/')) {
+      } else if (date.includes('/')) {
         date = date.split('/');
         if (date.length === 3) {
           if (Number(date[1]) > 0 && Number(date[1]) <= 31) {
             if (Number(date[0]) > 0 && Number(date[0]) <= 12) {
-              return `${date[1]}-${date[0]}-${date[2]}`;
+              if (Number(date[2])) {
+                return `${date[1]}-${date[0]}-${date[2]}`;
+              }
             }
           }
         }
