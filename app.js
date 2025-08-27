@@ -26,11 +26,11 @@ const ToDoList = {
     };
   },
   sortByPriority: function (ASC = true) {
-    return this.tasks.sort((a, b) => {
+    this.tasks.sort((a, b) => {
       if (ASC) {
-        a.priority - b.priority;
+        return a.priority - b.priority;
       } else {
-        b.priority - a.priority;
+        return b.priority - a.priority;
       }
     });
   },
