@@ -26,7 +26,7 @@ const ToDoList = {
     };
   },
   sortByPriority: function (ASC = true) {
-    this.tasks.sort((a, b) => {
+    return this.tasks.sort((a, b) => {
       if (ASC) {
         a.priority - b.priority;
       } else {
