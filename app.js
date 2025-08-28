@@ -36,15 +36,20 @@ const ToDoList = {
   },
 };
 
-ToDoList.addTask('помыть полы', 2);
-console.log(ToDoList);
-ToDoList.removeTask(1);
-console.log(ToDoList);
-ToDoList.updateTask(2, 'подмести', 1);
-console.log(ToDoList);
-ToDoList.addTask('потанцевать', 3);
-console.log(ToDoList);
-ToDoList.sortByPriority();
-// console.log(ToDoList);
-// ToDoList.sortByPriority(false);
-console.log(ToDoList);
+const newTask = {
+  tasks: [
+    {
+      id: 1,
+      name: 'тест',
+      description: 'описание',
+      order: 0,
+    },
+  ],
+};
+
+newTask.getIndex = ToDoList.getIndex;
+newTask.addTask = ToDoList.addTask;
+newTask.removeTask = ToDoList.removeTask;
+newTask.sortByPriority = ToDoList.sortByPriority;
+
+console.log(newTask);
