@@ -50,6 +50,15 @@ const newTask = {
 newTask.getIndex = ToDoList.getIndex;
 newTask.addTask = ToDoList.addTask;
 newTask.removeTask = ToDoList.removeTask;
+newTask.updateTask = ToDoList.updateTask;
 newTask.sortByPriority = ToDoList.sortByPriority;
+
+newTask.getIndex(0);
+newTask.addTask('test2', 2);
+newTask.removeTask(0);
+newTask.updateTask(1, 'test update', 3);
+newTask.sortByPriority();
+
+console.log(newTask);
 
 console.log(newTask);
