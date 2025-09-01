@@ -4,10 +4,14 @@ const arr = [
   { id: 1, name: 'Вася' },
 ];
 
-const uniqKeys = new Set(arr.keys());
-
-const newArr = [...uniqKeys]
-  .map((key) => arr.find((element) => element.id === key))
-  .filter((element) => element != undefined);
+const seen = new Set();
+const newArr = arr.filter((el) => {
+  if (seen.has(el.id)) {
+    return false;
+  } else {
+    seen.add(el.id);
+    return true;
+  }
+});
 
 console.log(newArr);
