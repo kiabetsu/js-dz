@@ -1,6 +1,7 @@
 function throwD(number) {
-  if (number >= 2 && number % 2 === 0 && number <= 20) {
-    return Math.round(Math.random() * (number - 1) + 1);
+  const correctNumb = [4, 6, 8, 10, 12, 16, 20];
+  if (correctNumb.includes(number)) {
+    return Math.trunc(Math.random() * number + 1);
   } else {
     console.log('incorrect number to throw');
     return null;
