@@ -1,16 +1,25 @@
 'use strict';
 
 function timer() {
-  const newYear = new Date(2026, 0, 1).getTime();
-  const options = {
-    month: 'numeric',
-    day: 'numeric',
-    hour: 'numeric',
-    minute: 'numeric',
-    second: 'numeric',
-  };
+  const newYear = new Date(2025, 11, 31, 23, 59, 59);
+  let today = new Date();
+
   setInterval(() => {
-    console.log(new Intl.DateTimeFormat(navigator.language, options).format(newYear - Date.now()));
+    document.querySelector('.timer').innerHTML = `${
+      newYear.getMonth() - today.getMonth()
+    } месяцев, ${newYear.getDate() - today.getDate()} дней, ${
+      newYear.getHours() - today.getHours()
+    } дней, ${newYear.getMinutes() - today.getMinutes()} минут, ${
+      newYear.getSeconds() - today.getSeconds()
+    } секунд`;
+    console.log(
+      `${newYear.getMonth() - today.getMonth()} месяцев, ${
+        newYear.getDate() - today.getDate()
+      } дней, ${newYear.getHours() - today.getHours()} дней, ${
+        newYear.getMinutes() - today.getMinutes()
+      } минут, ${newYear.getSeconds() - today.getSeconds()} секунд`,
+    );
+    today = new Date();
   }, 1000);
 }
 
