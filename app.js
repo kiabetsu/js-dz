@@ -1,26 +1,22 @@
 'use strict';
 
 function timer() {
-  const newYear = new Date(2025, 11, 31, 23, 59, 59);
+  const newYear = new Date(2026, 0, 1);
   let today = new Date();
 
   setInterval(() => {
-    document.querySelector('.timer').innerHTML = `${
-      newYear.getMonth() - today.getMonth()
-    } месяцев, ${newYear.getDate() - today.getDate()} дней, ${
-      newYear.getHours() - today.getHours()
-    } дней, ${newYear.getMinutes() - today.getMinutes()} минут, ${
-      newYear.getSeconds() - today.getSeconds()
-    } секунд`;
-    console.log(
-      `${newYear.getMonth() - today.getMonth()} месяцев, ${
-        newYear.getDate() - today.getDate()
-      } дней, ${newYear.getHours() - today.getHours()} дней, ${
-        newYear.getMinutes() - today.getMinutes()
-      } минут, ${newYear.getSeconds() - today.getSeconds()} секунд`,
-    );
+    let diff = newYear - today;
+    const months = Math.floor(diff / (1000 * 60 * 60 * 24 * 30.44));
+    const days = Math.floor((diff % (1000 * 60 * 60 * 24 * 30.44)) / (1000 * 60 * 60 * 24));
+    const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+    const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+    const seconds = Math.floor((diff % (1000 * 60)) / 1000);
+    document.querySelector(
+      '.timer',
+    ).innerHTML = `${months} месяцев, ${days} дней, ${hours} часов, ${minutes} минут, ${seconds} секунд`;
     today = new Date();
   }, 1000);
 }
 
-console.log(timer());
+// console.log(timer());
+timer();
