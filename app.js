@@ -1,7 +1,7 @@
 function is14yo(date) {
   const myDate = new Date(date);
   const today = new Date();
-  if (myDate.getFullYear() - today.getFullYear() > 14) {
+  if (today.getFullYear() - myDate.getFullYear() > 14) {
     return true;
   }
   if (today.getFullYear() - myDate.getFullYear() === 14) {
@@ -15,4 +15,4 @@ function is14yo(date) {
   return false;
 }
 
-console.log(is14yo('2011-09-06'));
+console.log(is14yo('2010-09-06'));
