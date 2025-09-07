@@ -4,40 +4,41 @@ const Person = function (race, name, language) {
   this.language = language;
 };
 Person.prototype.say = function () {
-  console.log(`${this.name} ${this.language}`);
+  console.log(`${this.language} ${this.name}`);
 };
 
 const Ork = function (name, language, weapon) {
-  this.name = name;
-  this.language = language;
+  Person.call(this, 'ork', name, language);
   this.weapon = weapon;
 };
 
-Ork.prototype = Person.prototype;
+Ork.prototype = Object.create(Person.prototype);
+Ork.prototype.constructor = Ork;
 
 Ork.prototype.hit = function () {
   console.log('Удар совершен');
 };
 
-const Elf = function (name, language) {
-  this.race = 'Elf';
-  this.name = name;
-  this.language = language;
+const Elf = function (name, language, spells) {
+  Person.call(this, 'elf', name, language);
+  this.spells = spells;
 };
 
-Elf.prototype = Person.prototype;
-Elf.prototype.spell = function () {
-  console.log('Заклинание прочитано');
+Elf.prototype = Object.create(Person.prototype);
+Elf.prototype.constructor = Elf;
+
+Elf.prototype.spell = function (idOfSpell) {
+  console.log(`${this.spells[idOfSpell]} прочитан`);
 };
-Elf.prototype.createSpell = function () {
-  console.log('Заклинание создано');
+Elf.prototype.createSpell = function (nameOfSpell) {
+  this.spells.push(nameOfSpell);
 };
 
 const ork1 = new Ork('orky', 'orkskiy', 'topor');
 ork1.say();
 ork1.hit();
 
-const elf1 = new Elf('elfy', 'elfskiy');
+const elf1 = new Elf('elfy', 'elfskiy', []);
 elf1.say();
-elf1.spell();
-elf1.createSpell();
+elf1.createSpell('fireball');
+elf1.spell(0);
