@@ -9,12 +9,11 @@ class Car {
     this.#mileage = mileage;
   }
 
-  get getMileage() {
+  get mileage() {
     return this.#mileage;
   }
-  set setMileage(newMileage) {
+  set mileage(newMileage) {
     this.#mileage = newMileage;
-    this.getMileage;
   }
 
   info() {
