@@ -8,27 +8,36 @@ Person.prototype.say = function () {
 };
 
 const Ork = function (name, language, weapon) {
-  Person.call(this, 'ork', name, language);
+  this.name = name;
+  this.language = language;
   this.weapon = weapon;
 };
 
-Ork.prototype = Object.create(Person.prototype);
-Ork.prototype.constructor = Ork;
+Ork.prototype = Person.prototype;
 
 Ork.prototype.hit = function () {
   console.log('Удар совершен');
 };
-Ork.prototype.spell = function () {
+
+const Elf = function (name, language) {
+  this.race = 'Elf';
+  this.name = name;
+  this.language = language;
+};
+
+Elf.prototype = Person.prototype;
+Elf.prototype.spell = function () {
   console.log('Заклинание прочитано');
 };
-Ork.prototype.createSpell = function () {
+Elf.prototype.createSpell = function () {
   console.log('Заклинание создано');
 };
 
 const ork1 = new Ork('orky', 'orkskiy', 'topor');
 ork1.say();
 ork1.hit();
-ork1.spell();
-ork1.createSpell();
 
-console.log(Ork);
+const elf1 = new Elf('elfy', 'elfskiy');
+elf1.say();
+elf1.spell();
+elf1.createSpell();
