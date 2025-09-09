@@ -2,7 +2,7 @@ class Billing {
   amount = 0;
 
   calculateTotal(prices) {
-    this.amount = prices.reduce(acc, (value) => (acc += value));
+    this.amount = prices.reduce((acc, value) => (acc += value), 0);
   }
 
   fixBilling(prices) {
@@ -15,6 +15,6 @@ class Billing {
   }
 
   itemBilling(prices, count) {
-    return this.fixBilling(prices) * items;
+    return this.fixBilling(prices) * count;
   }
 }
