@@ -10,7 +10,8 @@ const getAbility = function () {
     request.open('GET', data.abilities[0].ability.url);
     request.send();
     request.addEventListener('load', function () {
-      return JSON.parse(this.responseText);
+      const data = JSON.parse(this.responseText);
+      console.log(data.flavor_text_entries.find((value) => value.language.name === 'en'));
     });
   });
 };
