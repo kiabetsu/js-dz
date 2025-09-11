@@ -1,19 +1,20 @@
-const getAbility = function () {
-  const request = new XMLHttpRequest();
-
-  request.open('GET', 'https://pokeapi.co/api/v2/pokemon/ditto');
-  request.send();
-  request.addEventListener('load', function () {
-    const data = JSON.parse(this.responseText);
-
-    const request = new XMLHttpRequest();
-    request.open('GET', data.abilities[0].ability.url);
-    request.send();
-    request.addEventListener('load', function () {
-      const data = JSON.parse(this.responseText);
-      console.log(data.flavor_text_entries.find((value) => value.language.name === 'en'));
-    });
+const getData = (url, errorMessage) => {
+  return fetch(url).then((response) => {
+    {
+      if (!response.ok) {
+        throw new Error(errorMessage);
+      }
+      return response.json();
+    }
   });
+};
+
+const getAbility = () => {
+  getData('https://pokeapi.co/api/v2/pokemon/ditto', 'can not receive pokemon')
+    .then((data) => getData(data.abilities[0].ability.url, 'cant receive ability'))
+    .then((data) =>
+      console.log(data.flavor_text_entries.find((lang) => lang.language.name === 'en')),
+    );
 };
 
 getAbility();
