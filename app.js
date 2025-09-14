@@ -1,5 +1,7 @@
 function getLocation() {
   return new Promise((resolve, reject) => {
+    const options = { enableHighAccuracy: true };
+
     function success(position) {
       resolve(position);
     }
@@ -15,7 +17,7 @@ function getLocation() {
       }
     }
 
-    navigator.geolocation.getCurrentPosition(success, error);
+    navigator.geolocation.getCurrentPosition(success, error, options);
   });
 }
 
