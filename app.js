@@ -17,13 +17,13 @@ wrapper.addEventListener('click', (event) => {
       for (let el of [...wrapper.children]) {
         el.classList.remove('pressed');
         el.innerText = 'Нажми меня';
-        el.disabled = false;
+        // el.disabled = false;
       }
       el.classList.add('pressed');
       el.innerText = 'Нажата!';
-      el.disabled = true;
+      // el.disabled = true;
     }
-    counterNum++;
-    counter.innerText = counterNum;
   }
+  counterNum++;
+  counter.innerText = counterNum;
 });
