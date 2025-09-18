@@ -1,6 +1,7 @@
 const wrapper = document.querySelector('.wrapper');
 const counter = document.querySelector('.counter');
 let counterNum = 0;
+counter.innerText = counterNum;
 
 for (let i = 0; i < 5; i++) {
   const button = document.createElement('button');
@@ -19,11 +20,10 @@ wrapper.addEventListener('click', (event) => {
         el.disabled = false;
       }
       el.classList.add('pressed');
-      el.innerText = 'Нажат';
+      el.innerText = 'Нажата!';
       el.disabled = true;
-      counterNum++;
-      counter.innerText = counterNum;
     }
-    console.log(el.parentElement.children);
+    counterNum++;
+    counter.innerText = counterNum;
   }
 });
