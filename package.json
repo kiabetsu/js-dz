@@ -1,0 +1,30 @@
+{
+  "name": "purple-dz",
+  "version": "1.0.0",
+  "description": "test npm",
+  "keywords": [
+    "test",
+    "npm"
+  ],
+  "homepage": "https://github.com/kiabetsu/js-dz#readme",
+  "bugs": {
+    "url": "https://github.com/kiabetsu/js-dz/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kiabetsu/js-dz.git"
+  },
+  "license": "ISC",
+  "author": "kiabetsu",
+  "type": "commonjs",
+  "main": "app.js",
+  "scripts": {
+    "build": "rollup index.js --file bundle.js",
+    "live-server": "live-server",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "devDependencies": {
+    "live-server": "^1.2.2",
+    "rollup": "^4.52.0"
+  }
+}
