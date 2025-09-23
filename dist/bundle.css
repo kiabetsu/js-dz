@@ -1,0 +1,173 @@
+.header,
+.menu,
+.menu__item {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.header {
+  margin: 20px 0;
+}
+
+.header .log img {
+  width: 40px;
+  height: 40px;
+}
+
+.menu {
+  gap: 20px;
+}
+.menu__item {
+  gap: 10px;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 20px;
+  text-decoration: none;
+}
+
+.menu__item:visited {
+  color: var(--black);
+}
+
+.menu__item img {
+  height: 16px;
+  width: 16px;
+}
+
+.active {
+  font-weight: 700;
+}
+
+.favoritesCount {
+  text-align: center;
+  align-content: center;
+  border-radius: 50%;
+  border: solid 1px var(--black);
+  width: 24px;
+  height: 24px;
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.card__image {
+  background: #b8b8b8;
+  display: flex;
+  padding-top: 10px;
+  justify-content: center;
+  align-items: start;
+  height: 180px;
+}
+
+.card__info {
+  display: flex;
+  flex-direction: column;
+  background: var(--black);
+  color: var(--white);
+  padding: 10px;
+  min-height: 150px;
+}
+
+.card__tag {
+  font-weight: 300;
+  font-size: 11px;
+  line-height: 15px;
+  margin-bottom: 3px;
+}
+
+.card__name {
+  font-weight: 600;
+  font-size: 15px;
+  line-height: 110%;
+  margin-bottom: 8px;
+}
+
+.card__author {
+  font-weight: 400;
+  font-size: 11px;
+  line-height: 15px;
+}
+
+.card__footer {
+  margin-top: auto;
+  display: flex;
+}
+
+.button__add {
+  border-radius: 6px;
+  width: 36px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: none;
+  border: 1px solid var(--white);
+  cursor: pointer;
+}
+
+.button__active {
+  background: var(--white);
+}
+
+.cardGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 30px;
+}
+
+.search {
+  display: flex;
+  width: 100%;
+  gap: 10px;
+  margin-bottom: 30px;
+}
+
+.search__wrapper {
+  display: flex;
+  flex: 1;
+  flex-direction: row;
+  align-items: center;
+  position: relative;
+}
+
+.search__wrapper img {
+  position: absolute;
+  display: flex;
+  top: 25%;
+  left: 8px;
+  width: 24px;
+  height: 24px;
+}
+
+.search button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 56px;
+  height: 56px;
+  background-color: var(--black);
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.search__input {
+  height: 56px;
+  border-radius: 5px;
+  border: none;
+  background-color: #dedede;
+  padding: 0px 50px;
+  flex: 1;
+}
+
+.search__input::placeholder {
+  color: #5e5d5d;
+  font-size: 14px;
+  line-height: 32px;
+}

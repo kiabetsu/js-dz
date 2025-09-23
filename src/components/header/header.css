@@ -1,0 +1,50 @@
+.header,
+.menu,
+.menu__item {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.header {
+  margin: 20px 0;
+}
+
+.header .log img {
+  width: 40px;
+  height: 40px;
+}
+
+.menu {
+  gap: 20px;
+}
+.menu__item {
+  gap: 10px;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 20px;
+  text-decoration: none;
+}
+
+.menu__item:visited {
+  color: var(--black);
+}
+
+.menu__item img {
+  height: 16px;
+  width: 16px;
+}
+
+.active {
+  font-weight: 700;
+}
+
+.favoritesCount {
+  text-align: center;
+  align-content: center;
+  border-radius: 50%;
+  border: solid 1px var(--black);
+  width: 24px;
+  height: 24px;
+}
