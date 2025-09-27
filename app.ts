@@ -55,8 +55,7 @@ const TENTHS_LESS_THAN_HUNDRED: string[] = [
  * @param {boolean} [asOrdinal] - Deprecated, use toWordsOrdinal() instead!
  * @returns {string}
  */
-function toWords(number: string, asOrdinal: boolean): string {
-  let words: string;
+function toWords(number: number | string, asOrdinal: boolean): string {
   let num: number = parseInt(number, 10);
 
   if (!isFinite(num)) {
@@ -65,14 +64,14 @@ function toWords(number: string, asOrdinal: boolean): string {
   if (!isSafeNumber(num)) {
     throw new RangeError('Input is not a safe number, it’s either too large or too small.');
   }
-  words = generateWords(num);
+  let words = generateWords(num);
   return asOrdinal ? makeOrdinal(words) : words;
 }
 
 function generateWords(number: number): string {
   let remainder: number,
     word: string | undefined,
-    words: string[] = arguments[1];
+    words: string[] | undefined = arguments[1];
 
   // We’re done
   if (number === 0) {
@@ -122,6 +121,8 @@ function generateWords(number: number): string {
     words.push(word);
     return generateWords(remainder, words);
   }
+
+  return words.join(' ').replace(/,$/, '');
 }
 
 module.exports = toWords;
