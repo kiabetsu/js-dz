@@ -96,4 +96,7 @@ const getUsers = async (): Promise<IUser[] | undefined> => {
   }
 };
 
-console.log(getUsers());
+(async () => {
+  const users = await getUsers();
+  console.log(users);
+})();
