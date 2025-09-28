@@ -85,7 +85,9 @@ interface IUser {
 
 const getUsers = async (): Promise<IUser[] | undefined> => {
   try {
-    const res: Promise<IUser[]> = axios.get('https://dummyjson.com/users').then((res) => res.data);
+    const res: IUser[] = await axios
+      .get('https://dummyjson.com/users')
+      .then((res) => res.data.users);
     return res;
   } catch (e) {
     if (e instanceof Error) {
@@ -93,3 +95,5 @@ const getUsers = async (): Promise<IUser[] | undefined> => {
     }
   }
 };
+
+console.log(getUsers());
