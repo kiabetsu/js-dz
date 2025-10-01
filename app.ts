@@ -1,38 +1,57 @@
 type MapElement = { key: unknown; value: unknown };
 
 class Map {
-  list: Array<MapElement> = [];
+  buckets: Array<Array<MapElement>> = [];
+  mapSize: number = 16;
 
-  has(key: unknown): boolean {
-    return this.list.map((element) => element.key).includes(key);
+  hash(key: unknown) {
+    const keyString = String(key);
+    let sum = 0;
+    for (let i = 0; i < keyString.length; i++) {
+      sum += keyString.charCodeAt(i);
+    }
+    const hash = sum % this.mapSize;
+    return hash;
   }
 
   set(key: unknown, value: unknown): void {
-    if (this.has(key)) {
-      this.list = this.list.map((element) => (element.key === key ? { key, value } : element));
-      return;
+    const index = this.hash(key);
+    if (!this.buckets[index]) {
+      this.buckets[index] = [];
     }
-    const element: MapElement = { key, value };
-    this.list.push(element);
+    const mapElement: MapElement = { key, value };
+    this.buckets[index].push(mapElement);
+  }
+
+  has(key: unknown): boolean {
+    const index = this.hash(key);
+    if (!this.buckets[index]) {
+      return false;
+    }
+    return this.buckets[index].map((mapElement) => mapElement.key).includes(key);
   }
 
   delete(key: unknown): void {
-    this.list = this.list.filter((element) => element.key !== key);
+    const index = this.hash(key);
+    if (!this.buckets[index]) {
+      return;
+    }
+    this.buckets[index].filter((mapElement) => mapElement.key !== key);
   }
 
   clear(): void {
-    this.list = [];
+    this.buckets = [];
   }
 }
 
 const newMap = new Map();
 
-// const newMap = new Map();
+// // const newMap = new Map();
 newMap.set('hello', 'world');
 newMap.set('hello1', 'world');
 newMap.set('hello2', 'world');
 newMap.set('hello', 'world1');
 newMap.delete(1);
-newMap.has('hello');
+console.log(newMap.has('hello'));
 
 console.log(newMap);
