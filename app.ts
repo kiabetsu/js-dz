@@ -64,13 +64,13 @@ class Map {
 
   delete(key: unknown): void {
     this.withBucketByKey(key, (bucket, index) => {
-      this.buckets[index]!.filter((mapElement) => mapElement.key !== key);
+      this.buckets[index] = this.buckets[index]!.filter((mapElement) => mapElement.key !== key);
     });
     // const index = this.hash(key);
     // if (!this.buckets[index]) {
     //   return;
     // }
-    // this.buckets[index].filter((mapElement) => mapElement.key !== key);
+    // this.buckets[index] = this.buckets[index].filter((mapElement) => mapElement.key !== key);
   }
 
   clear(): void {
