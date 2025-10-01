@@ -14,29 +14,63 @@ class Map {
     return hash;
   }
 
-  set(key: unknown, value: unknown): void {
+  withBucketByKey(
+    key: unknown,
+    callback: (bucket: Array<MapElement>, index: number) => void,
+    createIfNotExist = false,
+  ): void {
     const index = this.hash(key);
-    if (!this.buckets[index]) {
+    if (!this.buckets[index] && createIfNotExist) {
       this.buckets[index] = [];
     }
-    const mapElement: MapElement = { key, value };
-    this.buckets[index].push(mapElement);
+    const bucket = this.buckets[index];
+    if (bucket) {
+      callback(bucket, index);
+    }
+  }
+
+  set(key: unknown, value: unknown): void {
+    this.withBucketByKey(key, (bucket) => {
+      const mapElement: MapElement = { key, value };
+      bucket.push(mapElement);
+    });
+  }
+
+  get(key: unknown): MapElement | undefined {
+    let found: MapElement | undefined;
+    this.withBucketByKey(key, (bucket) => {
+      found = bucket.find((mapElement) => mapElement.key === key);
+    });
+    return found;
+    // const index = this.hash(key);
+    // if (!this.buckets[index]) {
+    //   return undefined;
+    // }
+    // return this.buckets[index].find((mapElement) => mapElement === key);
   }
 
   has(key: unknown): boolean {
-    const index = this.hash(key);
-    if (!this.buckets[index]) {
-      return false;
-    }
-    return this.buckets[index].map((mapElement) => mapElement.key).includes(key);
+    let exist = false;
+    this.withBucketByKey(key, (bucket) => {
+      exist = bucket.some((mapElement) => mapElement.key);
+    });
+    return exist;
+    // const index = this.hash(key);
+    // if (!this.buckets[index]) {
+    //   return false;
+    // }
+    // return this.buckets[index].map((mapElement) => mapElement.key).includes(key);
   }
 
   delete(key: unknown): void {
-    const index = this.hash(key);
-    if (!this.buckets[index]) {
-      return;
-    }
-    this.buckets[index].filter((mapElement) => mapElement.key !== key);
+    this.withBucketByKey(key, (bucket, index) => {
+      this.buckets[index]!.filter((mapElement) => mapElement.key !== key);
+    });
+    // const index = this.hash(key);
+    // if (!this.buckets[index]) {
+    //   return;
+    // }
+    // this.buckets[index].filter((mapElement) => mapElement.key !== key);
   }
 
   clear(): void {
