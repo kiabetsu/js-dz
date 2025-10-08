@@ -1,15 +1,15 @@
 class User {
-  @allowFunc()
+  @allowFunc((a: number) => a > 0)
   age: number = 30;
 }
 
-function allowFunc() {
+function allowFunc(check: (a: number) => boolean) {
   return (target: any, propertyKey: string) => {
     Object.defineProperty(target, propertyKey, {
       configurable: true,
       enumerable: true,
       get: function () {
-        return this[`__${propertyKey}`];
+        return this[`__${propertyKey}`] ?? 30;
       },
       set: function (newAge: number) {
         if (newAge > 0) {
