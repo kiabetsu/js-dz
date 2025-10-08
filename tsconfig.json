@@ -20,6 +20,9 @@
     "declaration": true,
     "declarationMap": true,
 
+    //my options
+    "experimentalDecorators": true,
+
     // Stricter Typechecking Options
     "noUncheckedIndexedAccess": true,
     "exactOptionalPropertyTypes": true,
@@ -39,6 +42,6 @@
     "isolatedModules": true,
     "noUncheckedSideEffectImports": true,
     "moduleDetection": "force",
-    "skipLibCheck": true,
+    "skipLibCheck": true
   }
 }
