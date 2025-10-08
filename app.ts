@@ -12,7 +12,7 @@ function allowFunc(check: (a: number) => boolean) {
         return this[`__${propertyKey}`] ?? 30;
       },
       set: function (newAge: number) {
-        if (newAge > 0) {
+        if (check(newAge)) {
           this[`__${propertyKey}`] = newAge;
         } else {
           console.log('error');
